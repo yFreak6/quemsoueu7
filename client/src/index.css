@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: #e9e3d6;
+  color: #16241c;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  overscroll-behavior: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+canvas {
+  touch-action: none;
+  display: block;
+}
+
+:focus-visible {
+  outline: 3px solid #2f9e63;
+  outline-offset: 2px;
+}
+
+button:not(:disabled) {
+  cursor: pointer;
+}
+button {
+  transition: background-color 0.15s, transform 0.1s, opacity 0.15s, box-shadow 0.15s;
+}
+button:not(:disabled):active {
+  transform: scale(0.97);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ===== Tema escuro dos menus (Home/Lobby) =====
+   Só vale dentro de [data-menu]; a partida (HUD/3D) tem visual próprio e não muda. */
+/* fundo da página inteira (as laterais fora do cartão central também ficam escuras) */
+html.dark,
+html.dark body,
+html.dark #root { background-color: #141b18; }
+html.dark [data-menu] { color: #eef3ef; }
+html.dark [data-menu] main {
+  background: radial-gradient(ellipse at top, #26332d, #1b2420 60%, #141b18) !important;
+}
+html.dark [data-menu] input,
+html.dark [data-menu] textarea { color: #eef3ef; }
+html.dark [data-menu] input::placeholder,
+html.dark [data-menu] textarea::placeholder { color: rgba(238, 243, 239, 0.4); }
+html.dark [data-menu] .bg-white { background-color: #26332d; }
+html.dark [data-menu] .bg-white\/85 { background-color: rgba(38, 51, 45, 0.88); }
+html.dark [data-menu] .bg-felt-light { background-color: #1f3a2c; }
+html.dark [data-menu] .bg-amber-50 { background-color: #40341a; }
+html.dark [data-menu] .bg-amber-100 { background-color: #4d3f1c; }
+html.dark [data-menu] .text-amber-700,
+html.dark [data-menu] .text-amber-800,
+html.dark [data-menu] .text-amber-900 { color: #f3d58a; }
+html.dark [data-menu] .text-felt-dark { color: #5fcf94; }
+html.dark [data-menu] .text-red-500,
+html.dark [data-menu] .text-red-600 { color: #ff7a7f; }
+html.dark [data-menu] .text-ink { color: #eef3ef; }
+html.dark [data-menu] .text-ink\/80 { color: rgba(238, 243, 239, 0.8); }
+html.dark [data-menu] .text-ink\/70 { color: rgba(238, 243, 239, 0.7); }
+html.dark [data-menu] .text-ink\/60 { color: rgba(238, 243, 239, 0.62); }
+html.dark [data-menu] .text-ink\/50 { color: rgba(238, 243, 239, 0.52); }
+html.dark [data-menu] .text-ink\/40 { color: rgba(238, 243, 239, 0.42); }
+html.dark [data-menu] .bg-ink\/5 { background-color: rgba(255, 255, 255, 0.07); }
+html.dark [data-menu] .bg-ink\/10 { background-color: rgba(255, 255, 255, 0.13); }
+html.dark [data-menu] .bg-ink\/20 { background-color: rgba(255, 255, 255, 0.24); }
+html.dark [data-menu] .border-ink\/10 { border-color: rgba(255, 255, 255, 0.16); }
+html.dark [data-menu] .border-ink\/25 { border-color: rgba(255, 255, 255, 0.32); }
+html.dark [data-menu] .ring-ink\/5 { --tw-ring-color: rgba(255, 255, 255, 0.08); }
+/* botão escuro vira claro */
+html.dark [data-menu] .bg-ink { background-color: #eef3ef; }
+html.dark [data-menu] .bg-ink.text-white { color: #16241c; }
+html.dark [data-menu] .hover\:bg-black:hover { background-color: #ffffff; }
+
+/* cartões de modo: entrada suave ao trocar de categoria */
+@keyframes qse-fade-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.qse-fade { animation: qse-fade-in 0.28s ease-out; }
+@media (prefers-reduced-motion: reduce) { .qse-fade { animation: none; } }
